@@ -1,5 +1,5 @@
 # import package
-from app import db
+from init import db
 from flask_bcrypt import generate_password_hash, check_password_hash
 
 
