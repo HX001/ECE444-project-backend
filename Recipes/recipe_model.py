@@ -1,4 +1,4 @@
-from app import db
+from init import db
 
 
 class Recipe(db.Document):
