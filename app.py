@@ -4,12 +4,12 @@ from flask_mongoengine import MongoEngine
 # local packages
 from flask import app, jsonify
 from flask import Flask, render_template, session, redirect, url_for, flash
-from flask_mongoengine import MongoEngine
+from init import db
 from flask_cors import CORS
 import routes_manage
 
 CONN_STR = 'mongodb+srv://yitong:password3666@test.zfblj.gcp.mongodb.net/test?retryWrites=true&w=majority'
-db = MongoEngine()
+
 
 app = Flask(__name__)
 CORS(app)
