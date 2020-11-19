@@ -5,8 +5,9 @@ from flask import Flask, request, jsonify
 class Blogs(db.Document):
     username = db.StringField(required=True)
     title = db.StringField(required=True)
-    rating = db.StringField()
+    rating = db.IntField()
     content = db.StringField(required=True)
+    imageURL = db.StringField()
 
     def to_json(self):
         return {
@@ -15,6 +16,7 @@ class Blogs(db.Document):
             "title": self.title,
             "rating": self.rating,
             "content": self.content,
+            "imageURL": self.imageURL,
             "status": 'success'
         }
 

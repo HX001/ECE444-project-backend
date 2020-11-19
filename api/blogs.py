@@ -19,6 +19,8 @@ class CreateNewArticle(Resource):
         username = body['username']
         title = body['title']
         content = body['content']
+        imageurl = body["imageURL"]
+        rating = body["rating"]
 
         # error checking
         article_exist = Blogs.objects(username=username, title=title).first()
@@ -26,23 +28,23 @@ class CreateNewArticle(Resource):
             return jsonify({"status": 'fail', "message": "Article already exists"})
 
         # save article's info in db
-        new_article = Blogs(username=username, title=title, content=content)
+        # new_article = Blogs(username=username, title=title, content=content)
+        new_article = Blogs(username=username, title=title, content=content, imageURL=imageurl, rating=rating)
         new_article.save()
         return jsonify({"status": 'success', "message": "Successfully created article"})
 
 # return an article's information given the id
 class GetArticleById(Resource):
     @staticmethod
-    def get(self, article_id):
-        return
-    def post(self, article_id) -> Response:
-        id = article_id
+    def post() -> Response:
+
+        body = request.get_json()
+        title = body['title']
 
         # error handling
         # check if the article exists in the db
         try:
-            article = Blogs.objects(id=article_id).first()
+            article = Blogs.objects(title=title).first()
         except:
             return jsonify({"status": 'fail', "message": "Article does not exist"})
-
         return article.to_json()

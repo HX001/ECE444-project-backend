@@ -34,7 +34,6 @@ def create_app(config=None):
 
 create_app(config = 'config')
 
-
 if __name__ == '__main__':
     # app.run(debug=True, host='0.0.0.0')
     # app.run(threaded=True, port=5000)
